@@ -1,0 +1,9 @@
+const actions = {
+    LOGIN : 'LOGIN',
+    SIGNOUT : 'SIGNOUT',
+    HENT_SOKNADER: 'HENT_SOKNADER',
+    FILTRER_SOKNADER: 'FILTRER_SOKNADER',
+    CHANGEMAINMENU: 'CHANGEMAINMENU'
+}
+
+export default actions;

@@ -1,0 +1,141 @@
+@import 'bulma';
+@import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "../../node_modules/roboto-fontface/css/roboto/roboto-fontface.css";
+$mainColor: #321E46;
+header {
+    background: white;
+}
+
+.center-stuff {
+    margin: auto;
+    width: 85%;
+}
+
+.center-text {
+    text-align: center;
+}
+
+body {
+    padding-right: 0!important;
+    font-family: Roboto-Light;
+    main {
+        color: $mainColor;
+        min-height: calc(100vh - 102px);
+    }
+    footer {
+        background: #D9DADB;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: black;
+    }
+    background-color: #fefefe;
+    .navbar {
+        background: white;
+        color: black;
+        height: 50px;
+        min-height: 3.25rem;
+        position: relative;
+        z-index: 30;
+        .navbar-brand {
+            align-items: stretch;
+            display: flex;
+            flex-shrink: 0;
+            min-height: 3.25rem;
+            .navbar-item {
+                align-items: center;
+                display: flex;
+            }
+        }
+    }
+    h1 {
+        font-size: 40px;
+        margin-top: 30px;
+    }
+    .logo {
+        color: black;
+    }
+    .profile {
+        align-items: center;
+        display: flex;
+        color: black;
+        float: right;
+        right: 0;
+        position: absolute;
+        padding: 0.5rem 0.75rem;
+        height: 50px;
+        p {
+            padding-left: 8px;
+        }
+    }
+}
+
+.services {
+    li {
+        text-align: center;
+        &:last-child {
+            .service {
+                .service-icon-background {
+                    background: #33B1E5;
+                }
+            }
+        }
+    }
+    .service {
+        background: white;
+        padding: 15px 15px;
+        color: #58585a;
+        transition: 0.2s;
+        min-height: 210px;
+        a {
+            color: #58585a;
+        }
+        .service-name {
+            font-size: 1.875rem
+        }
+        .service-icon i {
+            color: white;
+            font-size: 2.5em
+        }
+        .service-icon-background {
+            background: #EA5D23;
+            height: 80px;
+            width: 80px;
+            border-radius: 150px;
+            display: inline-block;
+            text-align: center;
+            line-height: 98px;
+        }
+        &:hover {
+            background: #BADDE9;
+            a {
+                color: black!important;
+            }
+        }
+    }
+}
+
+.btn-nostyle {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.transition {
+    transition: 0.2s;
+}
+
+form {
+    .form-element {
+        margin: 0px 15px
+    }
+}
+
+.search-result {
+    padding: 40px 0;
+    min-height: 515px;
+}
