@@ -21,43 +21,43 @@ const Logg = (props) => (
                         <table class="table is-fullwidth is-striped is-hoverable">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
                                         <th>Dato</th>
                                         <th>Beskrivelse</th>
+                                        <th>Rolle</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <p class="is-8">1</p>
+                                            <p>05/03/2019</p>
                                         </td>
                                         <td>
-                                            <p class="is-8">05/03/2019</p>
+                                            <p>Kari Nordmann etterspurte mer informasjon</p>
                                         </td>
                                         <td>
-                                            <p class="is-8">Kari Nordmann etterspurte mer informasjon</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="is-8">1</p>
-                                        </td>
-                                        <td>
-                                            <p class="is-8">04/03/2019</p>
-                                        </td>
-                                        <td>
-                                            <p class="is-8">Lars Nordmann la til filen vandel.pdf</p>
+                                            <p>Virksomhet</p>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p class="is-8">1</p>
+                                            <p>04/03/2019</p>
                                         </td>
                                         <td>
-                                            <p class="is-8">04/03/2019</p>
+                                            <p>Lars Nordmann la til filen vandel.pdf</p>
                                         </td>
                                         <td>
-                                            <p class="is-8">Søknaden ble sendt inn</p>
+                                            <p>Saksbehandler</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>04/03/2019</p>
+                                        </td>
+                                        <td>
+                                            <p>Søknaden ble sendt inn</p>
+                                        </td>
+                                        <td>
+                                            <p>Virksomhet</p>
                                         </td>
                                     </tr>
                                 </tbody>

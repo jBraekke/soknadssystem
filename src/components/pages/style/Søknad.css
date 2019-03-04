@@ -6,5 +6,9 @@
 .headerStyle{
     background-color: rgb(241, 241, 241); 
     border-right: 1px solid white;
-    
+
+}
+
+p{
+  font-size: 0.8em;
 }
