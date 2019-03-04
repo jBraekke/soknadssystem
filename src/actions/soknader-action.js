@@ -9,9 +9,6 @@ const alleSoknader = [
     new Soknad('Storgata bryggeri AS', '921027672', '1808', 'Askim', 'Sven O. Høiby', 'Registrert', 5),
 ];
 
-window.a = alleSoknader
-
-
 function hentSoknader() {
     return (dispatch) => {
         dispatch({

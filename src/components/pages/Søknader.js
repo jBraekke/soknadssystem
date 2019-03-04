@@ -29,7 +29,6 @@ class Søknader extends React.Component {
     render() {
 
         return (
-
             <React.Fragment>
                 <TextField
                     style={{ padding: '13px 44px 7px' }}
