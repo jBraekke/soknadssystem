@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux'
+
 import TextField from '@material-ui/core/TextField'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,80 +10,81 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
+import { hentSoknader, filtrerSoknader } from '../../actions/soknader-action';
 
-const styles = theme => ({
-    root: {
-        width: '100%',
-        marginTop: theme.spacing.unit * 3,
-        overflowX: 'auto',
-    },
-    table: {
-        minWidth: 700,
-    },
-});
+class Søknader extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { name: 'hello' };
+    }
 
-let id = 0;
-function createData(name, post, contact, status, open) {
-    id += 1;
-    return { id, name, post, contact, status, open };
-}
+    componentWillMount() {
+        this.props.dispatch(hentSoknader());
+    }
 
-const rows = [
-    createData('Atlungstad Håndverksdestilleri AS (820853032)', 'Atlungstad - 1668', 'Jens Jensen', 'Registrert', 1),
-    createData('Jåttå Gårdsbryggeri AS (123456789)', 'Jåtta - 0103', 'Erling Havnå', 'Innhenter vandel', 2),
-    createData('Sider AS (921651686)', 'Sandvika - 1337', 'Ola Nordmann', 'Innhenter skatt', 3),
-    createData('Stolt bryggeri AS (912856291)', 'Oslo - 1166', 'Kari Jaquesson', 'Registrert', 4),
-    createData('Storgata bryggeri AS (921027672)', 'Askim - 1808', 'Sven O. Høiby', 'Registrert', 5),
-];
+    handleSearch(searchTxt) {
+        this.props.dispatch(filtrerSoknader(searchTxt));
+    }
 
-function SimpleTable(props) {
-    const { classes } = props;
+    render() {
 
-    return (
+        return (
 
-        <React.Fragment>
-            <TextField
-                style={{ padding: '13px 44px 7px' }}
-                placeholder="Søk i søknader"
-                fullWidth
-                margin="normal"
-            />
+            <React.Fragment>
+                <TextField
+                    style={{ padding: '13px 44px 7px' }}
+                    placeholder="Søk etter organisasjonsnummer"
+                    fullWidth
+                    margin="normal"
+                    onChange={(e) => this.handleSearch(e.target.value)}
+                />
 
-
-            <Paper className={classes.root}>
-                <Table className={classes.table}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Organisasjon</TableCell>
-                            <TableCell>Poststed</TableCell>
-                            <TableCell>Kontakt</TableCell>
-                            <TableCell>Status</TableCell>
-                            <TableCell align="right"></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map(row => (
-                            <TableRow key={row.id}>
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell>{row.post}</TableCell>
-                                <TableCell>{row.contact}</TableCell>
-                                <TableCell>{row.status}</TableCell>
-                                <TableCell align="right">
-                                    <Link to={`/soknad/${row.open}`}>Åpne</Link>
-                                </TableCell>
+                <Paper styles={{
+                    width: '100%',
+                    marginTop: 3,
+                    overflowX: 'auto'
+                }}>
+                    <Table className={{ minWidth: 700 }}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Organisasjon</TableCell>
+                                <TableCell>Poststed</TableCell>
+                                <TableCell>Kontakt</TableCell>
+                                <TableCell>Status</TableCell>
+                                <TableCell align="right"></TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </Paper>
-        </React.Fragment>
-    );
+                        </TableHead>
+                        <TableBody>
+                            {this.props.soknader.map(row => (
+                                <TableRow key={row.id}>
+                                    <TableCell component="th" scope="row">
+                                        {row.navn} ({row.org})
+                                    </TableCell>
+                                    <TableCell>{row.poststed} - {row.postnr}</TableCell>
+                                    <TableCell>{row.kontakt}</TableCell>
+                                    <TableCell>{row.status}</TableCell>
+                                    <TableCell align="right">
+                                        <Link to={`/soknad/${row.id}`}>Åpne</Link>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Paper>
+            </React.Fragment >
+        );
+    }
 }
 
-SimpleTable.propTypes = {
-    classes: PropTypes.object.isRequired,
+const mapStoreToProps = store => {
+    return {
+        menu: store.menu,
+        soknader: store.soknader
+    }
+}
+
+Søknader.propTypes = {
+    menu: PropTypes.number,
 };
 
-export default withStyles(styles)(SimpleTable);
+export default connect(mapStoreToProps)(Søknader);
