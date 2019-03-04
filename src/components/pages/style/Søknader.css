@@ -1,0 +1,9 @@
+.borderLeft {
+    margin-top: 20px;
+    border-left: 1px solid rgba(0,0,0,.15);
+  }
+
+.headerStyle{
+    background-color: rgb(241, 241, 241); 
+    border-right: 1px solid white;
+}
