@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import FolderIcon from '@material-ui/icons/Folder';
 
 import Logg from '../elements/Logg';
-import './style/Søknader.css';
+import './style/Søknad.css';
 
 import { hentSoknader } from '../../actions/soknader-action';
 
@@ -134,7 +134,7 @@ class Søknad extends React.Component {
                         </div>
                     </div>
                     <div class="column is-one-thirds borderLeft">
-                        <Logg title="Logg" subtitle="Søknadens siste handlinger"></Logg>
+                        <Logg title="Hendelseslogg" subtitle="Søknadens siste hendelser"></Logg>
                     </div>
                 </div>
             </div>
@@ -150,3 +150,4 @@ Søknad.propTypes = {
     soknader: PropTypes.array,
 };
 export default connect(mapStoreToProps)(Søknad);
+

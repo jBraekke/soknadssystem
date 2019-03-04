@@ -11,6 +11,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { hentSoknader, filtrerSoknader } from '../../actions/soknader-action';
+import './style/Søknader.css';
+
 
 class Søknader extends React.Component {
     constructor(props) {
@@ -31,7 +33,7 @@ class Søknader extends React.Component {
         return (
             <React.Fragment>
                 <TextField
-                    style={{ padding: '13px 44px 7px' }}
+                    style={{ padding: '13px 20px 7px', width: "500px"}}
                     placeholder="Søk etter organisasjonsnummer"
                     fullWidth
                     margin="normal"
@@ -63,7 +65,7 @@ class Søknader extends React.Component {
                                     <TableCell>{row.kontakt}</TableCell>
                                     <TableCell>{row.status}</TableCell>
                                     <TableCell align="right">
-                                        <Link to={`/soknad/${row.id}`}>Åpne</Link>
+                                        <Link class="åpneKnapp" to={`/soknad/${row.id}`}>Åpne</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
