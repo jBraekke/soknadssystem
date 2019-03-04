@@ -1,9 +1,11 @@
-.borderLeft {
-    margin-top: 20px;
-    border-left: 1px solid rgba(0,0,0,.15);
-  }
+.åpneKnapp{
+    padding: 9px 12px 9px;
+    border: 1px solid rgb(91, 209, 199);
+    border-radius: 42px;
+    background-color: rgb(91, 209, 199);
+    color:white;
+}
 
-.headerStyle{
-    background-color: rgb(241, 241, 241); 
-    border-right: 1px solid white;
+.åpneKnapp:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
 }

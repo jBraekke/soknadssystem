@@ -1,7 +1,7 @@
 import React from 'react'
 import Hero from '../elements/Hero';
 import Logg from '../elements/Logg';
-import './style/Søknader.css';
+import './style/Søknad.css';
 
 
 const Søknad = () => (
@@ -28,7 +28,7 @@ const Søknad = () => (
                 </div>
             </div>
             <div class="column is-one-thirds borderLeft">
-                <Logg title="Logg" subtitle="Søknadens siste handlinger"></Logg>
+                <Logg title="Hendelseslogg" subtitle="Søknadens siste hendelser"></Logg>
             </div>
         </div>
     </div>
