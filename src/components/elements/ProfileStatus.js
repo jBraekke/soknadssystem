@@ -8,7 +8,7 @@ import { getProfile } from '../../actions/profile-action';
 class ProfileStatus extends React.Component {
 
     componentWillMount() {
-        this.props.dispatch(getProfile());
+        // this.props.dispatch(getProfile());
     }
 
     handleLogin(e) {

@@ -5,13 +5,7 @@ import { connect } from 'react-redux';
 import { hentLogger } from '../../actions/logg-action'
 
 class Logg extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            henterData: true,
-        };
-    }
-
+    
     componentWillMount() {
         window.scrollTo(0, 0);
         if (this.props.logger.length === 0) {

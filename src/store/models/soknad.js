@@ -33,7 +33,7 @@ class Soknad {
         this.opprettet = opprettet;
         this.tlf = tlf;
 
-        this.epost = `${kontakt.replace(/ /g, '.')}@${navn.replace(/ /g, '.')}`.toLowerCase();
+        this.epost = `${kontakt.replace(/ /g, '.')}@${navn.replace(/ /g, '.')}`.toLowerCase().replace('.as', '.no');
     }
 }
 
