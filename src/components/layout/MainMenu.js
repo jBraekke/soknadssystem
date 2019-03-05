@@ -19,7 +19,7 @@ class MainMenu extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{ height: 61 }}>
                 <AppBar position="static" style={{ background: '#f7f6f6', color: 'black' }}>
                     <div className="container">
                         <Tabs value={this.props.menu} indicatorColor="secondary" onChange={(event, value) => this.handleChange(value)}>

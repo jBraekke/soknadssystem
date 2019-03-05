@@ -11,8 +11,12 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
+
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import Steps from '../elements/Steps';
 
 import Logg from '../elements/Logg';
 import './style/Søknad.css';
@@ -61,6 +65,9 @@ class Søknad extends React.Component {
         if (søknad) {
             return (
                 <React.Fragment>
+                    <h1>Prosess</h1>
+                    <Steps />
+                    <br />
                     <h1>Søknad <small>({søknad.status})</small></h1>
                     <br />
                     <div className="columns">
@@ -92,7 +99,8 @@ class Søknad extends React.Component {
                             <TextField value={`${søknad.postnr} - ${søknad.poststed}`} fullWidth label="Poststed" />
                         </div>
                     </div>
-                    <h1>Vedlegg</h1>
+                    <br />
+                    <h1>Vedlegg fra søknad</h1>
                     <Grid item xs={12} md={6}>
 
                         <List>
@@ -113,7 +121,6 @@ class Søknad extends React.Component {
 
                         </List>
                     </Grid>
-                    <h1>Plan</h1>
                 </React.Fragment>
             );
         }
