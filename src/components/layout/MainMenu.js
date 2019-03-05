@@ -23,7 +23,7 @@ class MainMenu extends React.Component {
                 <AppBar position="static" style={{ background: '#f7f6f6', color: 'black' }}>
                     <div className="container">
                         <Tabs value={this.props.menu} indicatorColor="secondary" onChange={(event, value) => this.handleChange(value)}>
-                            <Tab label="Mine søknader" to={routes.vedtak} component={Link} />
+                            <Tab label="Mine søknader" to={routes.mineSøknader} component={Link} />
                             <Tab label="Finn søknader" to={routes.home} component={Link} />
                             <Tab label="Ferdigstilte søknader" to={routes.saker} component={Link} />
                         </Tabs>

@@ -29,7 +29,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { serializeToObject } from '../../utils/form'
 import { getVedtak } from '../../actions/blåresept-action';
 
-import No from './No';
+import MineSøknader from './MineSøknader';
 
 const spraak = {
     header: 'Vedtak',
@@ -228,7 +228,7 @@ class Vedtak extends React.Component {
     render() {
         return (
             <div>
-                {this.props.user.authenticated ? this.visSiden(): <No />}
+                {this.props.user.authenticated ? this.visSiden(): <MineSøknader />}
             </div>
         );
     }

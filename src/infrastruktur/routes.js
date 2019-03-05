@@ -3,7 +3,7 @@ const routes = {
     soknad: '/soknad/:id',
     profile: '/profil',
     reseptsonkad: '/reseptsonkad',
-    vedtak: '/vedtak',
+    mineSøknader: '/mine',
     saker: '/saker',
 }
 

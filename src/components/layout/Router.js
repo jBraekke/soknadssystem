@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Søknader from '../pages/Søknader'
 import Saker from '../pages/Saker'
-import NotAllowed from '../pages/No'
+import NotAllowed from '../pages/MineSøknader'
 import Profile from '../pages/Profile'
 import Soknad from '../pages/Søknad';
 import Vedtak from '../pages/Vedtak';
@@ -16,7 +16,7 @@ const Main = () => (
             <Route exact path={routes.saker} component={Saker} />
             <Route path={routes.profile} component={Profile} />
             <Route path='/notallowed' component={NotAllowed} />
-            <Route path={routes.vedtak} component={Vedtak} />
+            <Route path={routes.mineSøknader} component={Vedtak} />
         </Switch>
     </main>
 )

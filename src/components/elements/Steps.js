@@ -121,12 +121,14 @@ class Steps extends React.Component {
                                     <Button
                                         disabled={activeStep === 0}
                                         onClick={() => this.handleBack()}
+                                        style={{borderRadius: "38px"}}
                                     >
                                         Tilbake
                                         </Button>
                                     <Button
                                         variant="contained"
                                         color="secondary"
+                                        style={{borderRadius: "38px", marginLeft: "5px"}}
                                         onClick={() => this.handleNext()}
                                     >
                                         {activeStep === steps.length - 1 ? 'Opprett bevilling' : 'Neste'}

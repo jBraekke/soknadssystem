@@ -10,26 +10,27 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
-import { hentSoknader, filtrerSoknader } from '../../actions/soknader-action';
+import { hentMineSoknader, filtrerSoknader } from '../../actions/soknader-action';
 import Search from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './style/Søknader.css';
+import menu from '../../constants/menu';
+import { setMenu } from '../../actions/menu-action';
 
 import Statistikk from '../elements/Statistikk';
 
-
-class Søknader extends React.Component {
+class MineSøknader extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: 'hello' };
+        this.props.dispatch(setMenu(menu.mineSøknader))
     }
 
     componentWillMount() {
-        this.props.dispatch(hentSoknader());
+        this.props.dispatch(hentMineSoknader());
     }
 
     handleSearch(searchTxt) {
-        this.props.dispatch(filtrerSoknader(searchTxt));
+        this.props.dispatch(filtrerSoknader(searchTxt, this.props.soknader));
     }
 
     render() {
@@ -37,7 +38,7 @@ class Søknader extends React.Component {
         return (
             <React.Fragment>
                 <div className="columns">
-                    <div className="column is-two-thirds" style={{paddingTop: "50px"}}>
+                    <div className="column is-two-thirds" style={{ paddingTop: "50px" }}>
                         <TextField
                             style={{ padding: '13px 20px 7px', width: "500px" }}
                             placeholder="Søk etter organisasjonsnummer"
@@ -46,20 +47,20 @@ class Søknader extends React.Component {
                             onChange={(e) => this.handleSearch(e.target.value)}
                             InputProps={{
                                 startAdornment: (
-                                  <InputAdornment position="start">
-                                    <Search/>
-                                  </InputAdornment>
+                                    <InputAdornment position="start">
+                                        <Search />
+                                    </InputAdornment>
                                 ),
-                              }}
+                            }}
                         />
                     </div>
                     <div className="column is-two-thirds">
-                              <Statistikk
-                                registrert="80%"
-                                inhentetSkatt="20%"
-                                opprettetBevilling="0%"
-                                />
-                        
+                        <Statistikk
+                            registrert="66%"
+                            inhentetSkatt="33%"
+                            opprettetBevilling="0%"
+                        />
+
                     </div>
                 </div>
                 <Paper styles={{
@@ -87,8 +88,7 @@ class Søknader extends React.Component {
                                     <TableCell>{row.kontakt}</TableCell>
                                     <TableCell>{row.status}</TableCell>
                                     <TableCell align="right">
-
-                                        <Link className="åpneKnapp" color="primary" to={`/soknad/${row.id}`}><i className="fas fa-external-link-alt" style={{ paddingRight: "5px" }}></i>Åpne</Link>
+                                        <Link className="åpneKnapp" color="primary" to={`/soknad/${row.id}`}>Åpne</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
@@ -96,10 +96,9 @@ class Søknader extends React.Component {
                     </Table>
                 </Paper>
             </React.Fragment >
-        );
+        )
     }
 }
-
 const mapStoreToProps = store => {
     return {
         menu: store.menu,
@@ -107,8 +106,9 @@ const mapStoreToProps = store => {
     }
 }
 
-Søknader.propTypes = {
+MineSøknader.propTypes = {
     menu: PropTypes.number,
 };
 
-export default connect(mapStoreToProps)(Søknader);
+export default connect(mapStoreToProps)(MineSøknader);
+
