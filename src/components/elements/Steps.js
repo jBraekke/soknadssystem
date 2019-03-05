@@ -15,7 +15,7 @@ import { connect } from 'react-redux'
 
 import { opprettLogg } from '../../actions/logg-action';
 
-class VerticalLinearStepper extends React.Component {
+class Steps extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +26,7 @@ class VerticalLinearStepper extends React.Component {
         return ['Innhent vandelsattest', 'Sjekk plantegningene', 'Innhent informasjon fra Skatteetaten', 'Opprett bevilling'];
     }
 
-    handleCheckbox(beskjed) {
+    handleLogg(beskjed) {
         this.props.dispatch(opprettLogg(beskjed));
     }
 
@@ -37,13 +37,13 @@ class VerticalLinearStepper extends React.Component {
                 const view = <FormGroup >
                     <FormControlLabel
                         control={
-                            <Checkbox value="politi" onChange={() => this.handleCheckbox('Hentet vandelsattest for Kari Nordmann')} />
+                            <Checkbox value="politi" onChange={() => this.handleLogg('Hentet vandelsattest for Kari Nordmann')} />
                         }
                         label="Hent vandelsattest for Kari Nordmann"
                     />
                     <FormControlLabel
                         control={
-                            <Checkbox value="politi" onChange={() => this.handleCheckbox('Hentet vandelsattest for Mons Monsen')} />
+                            <Checkbox value="politi" onChange={() => this.handleLogg('Hentet vandelsattest for Mons Monsen')} />
                         }
                         label="Hent vandelsattest for Mons Monsen"
                     />
@@ -68,9 +68,29 @@ class VerticalLinearStepper extends React.Component {
     }
 
     handleNext() {
+
+        const currentState = this.state.activeStep + 1;
+
         this.setState({
-            activeStep: this.state.activeStep + 1,
+            activeStep: currentState,
         });
+
+        console.log(currentState, ' STATE')
+
+
+        switch (currentState) {
+            case 2:
+                this.handleLogg('Plantegningene er godkjent');
+                break;
+            case 3:
+                this.handleLogg('Innhentet informasjon fra Skatteetaten');
+                break;
+            case 4:
+                this.handleLogg('Opprettet bevilling i TBR med ID 1234');
+                break;
+            default:
+                break;
+        }
     };
 
     handleBack() {
@@ -110,7 +130,7 @@ class VerticalLinearStepper extends React.Component {
                                         color="secondary"
                                         onClick={() => this.handleNext()}
                                     >
-                                        {activeStep === steps.length - 1 ? 'Ferdig' : 'Neste'}
+                                        {activeStep === steps.length - 1 ? 'Opprett bevilling' : 'Neste'}
                                     </Button>
                                 </div>
 
@@ -118,18 +138,13 @@ class VerticalLinearStepper extends React.Component {
                         </Step>
                     ))}
                 </Stepper>
-                {activeStep === steps.length && (
-                    <Paper square elevation={0} >
-                        <Typography>Bevillingen er opprettet</Typography>
-                    </Paper>
-                )}
             </div>
         );
     }
 }
 
-VerticalLinearStepper.propTypes = {
+Steps.propTypes = {
 
 };
 
-export default connect()(VerticalLinearStepper);
+export default connect()(Steps);

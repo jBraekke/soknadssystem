@@ -43,7 +43,7 @@ class Logg extends React.Component {
                         <tbody>
                             {(this.props.logger || []).map((logg, index) => {
                                 return <tr key={index}>
-                                    <td>
+                                    <td title={`Klokka ${logg.tid}`}>
                                         <p>{logg.opprettet}</p>
                                     </td>
                                     <td>
