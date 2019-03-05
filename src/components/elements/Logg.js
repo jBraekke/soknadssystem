@@ -1,69 +1,73 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { hentLogger } from '../../actions/logg-action'
 
-const Logg = (props) => (
-    <section>
-        <div>
-            <h1>
-                {props.title}
-            </h1>
-            <p className="subtitle">
-                {props.subtitle}
-            </p>
-        </div>
-        <div>
-            <table class="table is-striped is-hoverable">
-                <thead>
-                    <tr>
-                        <th>Dato</th>
-                        <th>Beskrivelse</th>
-                        <th>Rolle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p>05/03/2019</p>
-                        </td>
-                        <td>
-                            <p>Kari Nordmann etterspurte mer informasjon</p>
-                        </td>
-                        <td>
-                            <p>Virksomhet</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>04/03/2019</p>
-                        </td>
-                        <td>
-                            <p>Lars Nordmann la til filen vandel.pdf</p>
-                        </td>
-                        <td>
-                            <p>Saksbehandler</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>04/03/2019</p>
-                        </td>
-                        <td>
-                            <p>Søknaden ble sendt inn</p>
-                        </td>
-                        <td>
-                            <p>Virksomhet</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-)
+class Logg extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            henterData: true,
+        };
+    }
+
+    componentWillMount() {
+        window.scrollTo(0, 0);
+        this.props.dispatch(hentLogger());
+    }
+
+    render() {
+        return (
+            <section>
+                <div>
+                    <h1>
+                        {this.props.title}
+                    </h1>
+                    <p className="subtitle">
+                        {this.props.subtitle}
+                    </p>
+                </div>
+                <div>
+                    <table class="table is-striped is-hoverable">
+                        <thead>
+                            <tr>
+                                <th>Dato</th>
+                                <th>Beskrivelse</th>
+                                <th>Opprettet av</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.logger.map(logg => {
+                                return <tr>
+                                    <td>
+                                        <p>{logg.opprettet}</p>
+                                    </td>
+                                    <td>
+                                        <p>{logg.beskjed}</p>
+                                    </td>
+                                    <td>
+                                        <p>{logg.opprettetAv}</p>
+                                    </td>
+                                </tr>
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        )
+    }
+}
+
+const mapStoreStateToProps = (store) => {
+    return {
+        logger: store.logger,
+    };
+};
 
 Logg.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string
 };
 
-export default Logg
+export default connect(mapStoreStateToProps)(Logg);

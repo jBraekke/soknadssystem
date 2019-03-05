@@ -1,22 +1,22 @@
 import actions from './actions';
 import Logg from '../store/models/logg';
 
-const alleSoknader = [
+const alleLogger = [
     new Logg('Søknad sendt inn'),
     new Logg('Søknad betalt'),
     new Logg('Etterspurt mer informasjon'),
 ];
 
-function hentSoknader() {
+function hentLogger() {
     return (dispatch) => {
         dispatch({
-            type: actions.HENT_SOKNADER,
-            soknader: alleSoknader
+            type: actions.HENT_LOGG,
+            logg: alleLogger
         });
     }
 }
 
-function filtrerSoknader(searchWord) {
+function opprettLogg(searchWord) {
 
     var searchResult = alleSoknader.filter((soknad) => soknad.org.indexOf(searchWord) > -1);
 
@@ -28,4 +28,4 @@ function filtrerSoknader(searchWord) {
     }
 }
 
-export { hentSoknader, filtrerSoknader };
+export { hentLogger, opprettLogg };
