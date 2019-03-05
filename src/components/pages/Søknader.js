@@ -11,6 +11,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
 import { hentSoknader, filtrerSoknader } from '../../actions/soknader-action';
+import Search from '@material-ui/icons/Search';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import './style/Søknader.css';
 
 
@@ -32,20 +34,58 @@ class Søknader extends React.Component {
 
         return (
             <React.Fragment>
-                <TextField
-                    style={{ padding: '13px 20px 7px', width: "500px"}}
-                    placeholder="Søk etter organisasjonsnummer"
-                    fullWidth
-                    margin="normal"
-                    onChange={(e) => this.handleSearch(e.target.value)}
-                />
-
+                <div className="columns">
+                    <div className="column is-two-thirds" style={{paddingTop: "50px"}}>
+                        <TextField
+                            style={{ padding: '13px 20px 7px', width: "500px" }}
+                            placeholder="Søk etter organisasjonsnummer"
+                            fullWidth
+                            margin="normal"
+                            onChange={(e) => this.handleSearch(e.target.value)}
+                            InputProps={{
+                                startAdornment: (
+                                  <InputAdornment position="start">
+                                    <Search/>
+                                  </InputAdornment>
+                                ),
+                              }}
+                        />
+                    </div>
+                    <div className="column is-two-thirds">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td className="stats">
+                                    <h1>80%</h1>
+                                </td>
+                                <td className="stats">
+                                    <h1>20%</h1>
+                                </td>
+                                <td className="stats">
+                                    <h1>0%</h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="stats">
+                                    <h2>Registrert</h2>
+                                </td>
+                                <td className="stats">
+                                    <h2>Innhenter skatt</h2>
+                                </td>
+                                <td className="stats">
+                                    <h2>Opprettet bevilling</h2>
+                                </td>
+                            </tr> 
+                            </tbody>                       
+                        </table>
+                    </div>
+                </div>
                 <Paper styles={{
                     width: '100%',
                     marginTop: 3,
                     overflowX: 'auto'
                 }}>
-                    <Table className={{ minWidth: 700 }}>
+                    <Table style={{ minWidth: 700 }}>
                         <TableHead>
                             <TableRow>
                                 <TableCell>Organisasjon</TableCell>
@@ -65,7 +105,7 @@ class Søknader extends React.Component {
                                     <TableCell>{row.kontakt}</TableCell>
                                     <TableCell>{row.status}</TableCell>
                                     <TableCell align="right">
-                                        <Link class="åpneKnapp" color="primary" to={`/soknad/${row.id}`}>Åpne</Link>
+                                        <Link className="åpneKnapp" color="primary" to={`/soknad/${row.id}`}><i className="fas fa-external-link-alt" style={{ paddingRight: "5px" }}></i>Åpne</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
