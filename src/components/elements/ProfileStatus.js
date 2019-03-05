@@ -32,7 +32,7 @@ class ProfileStatus extends React.Component {
     handleBtn() {
         if (!this.props.user.authenticated) {
             return (< a className="profile btn-nostyle" href={this.createLoginLink()} >
-                <i className="fas fa-user-circle fa-2x"></i> <p>Frithjof Arngren</p>
+                <i className="fas fa-user-circle fa-2x"></i> <p>Jørgen Brække</p>
             </a >);
         }
 
