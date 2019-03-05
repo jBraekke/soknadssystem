@@ -25,7 +25,7 @@ class MainMenu extends React.Component {
                         <Tabs value={this.props.menu} indicatorColor="secondary" onChange={(event, value) => this.handleChange(value)}>
                             <Tab label="Mine søknader" to={routes.vedtak} component={Link} />
                             <Tab label="Finn søknader" to={routes.home} component={Link} />
-                            <Tab label="Finn saker" to={routes.saker} component={Link} />
+                            <Tab label="Ferdigstilte søknader" to={routes.saker} component={Link} />
                         </Tabs>
                     </div>
                 </AppBar>

@@ -1,10 +1,11 @@
+import moment from 'moment';
 import actions from './actions';
 import Logg from '../store/models/logg';
 
 const alleLogger = [
-    new Logg('Søknad sendt inn'),
-    new Logg('Søknad betalt'),
-    new Logg('Etterspurt mer informasjon'),
+    new Logg('Etterspurt mer informasjon', moment().subtract(1, 'day').format('DD/MM/YYYY')),
+    new Logg('Søknad betalt', moment().subtract(2, 'day').format('DD/MM/YYYY')),
+    new Logg('Søknad sendt inn', moment().subtract(3, 'day').format('DD/MM/YYYY')),
 ];
 
 function hentLogger() {
@@ -16,14 +17,14 @@ function hentLogger() {
     }
 }
 
-function opprettLogg(searchWord) {
+function opprettLogg(beskjed) {
 
-    var searchResult = alleSoknader.filter((soknad) => soknad.org.indexOf(searchWord) > -1);
+    var logg = new Logg(beskjed, moment().format('DD/MM/YYYY'), "Jørgen Brække", moment().format('hh:mm:ss'))
 
     return (dispatch) => {
         dispatch({
-            type: actions.HENT_SOKNADER,
-            soknader: searchWord.length > 0 ? searchResult : alleSoknader
+            type: actions.OPPRETT_LOGG,
+            logg
         });
     }
 }

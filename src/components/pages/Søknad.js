@@ -12,10 +12,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import Grid from '@material-ui/core/Grid';
 
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-
 import Steps from '../elements/Steps';
 
 import Logg from '../elements/Logg';
@@ -24,11 +20,6 @@ import './style/Søknad.css';
 import { hentSoknader } from '../../actions/soknader-action';
 
 class Søknad extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { name: 'hello' };
-    }
-
     componentWillMount() {
         if (this.props.søknader.length === 0) {
             this.props.dispatch(hentSoknader());
@@ -105,10 +96,10 @@ class Søknad extends React.Component {
 
                         <List>
                             {
-                                this.generateVedlegg(søknad).map(vedlegg => {
-                                    return <ListItem>
+                                this.generateVedlegg(søknad).map((vedlegg, index) => {
+                                    return <ListItem key={index}>
                                         <ListItemIcon>
-                                            <i class={vedlegg.icon}></i>
+                                            <i className={vedlegg.icon}></i>
                                         </ListItemIcon>
                                         <a href="">
                                             <ListItemText
@@ -132,16 +123,17 @@ class Søknad extends React.Component {
     render() {
         return (
             <div>
-                <div class="columns">
-                    <div class="column is-two-thirds">
+                <div className="columns">
+                
+                    <div className="column is-two-thirds">
                         <div>
                             {
                                 this.visSøknad()
                             }
                         </div>
                     </div>
-                    <div class="column is-one-thirds borderLeft">
-                        <Logg title="Hendelseslogg" subtitle="Søknadens siste hendelser"></Logg>
+                    <div className="column is-one-thirds borderLeft">
+                        <Logg title="Hendelseslogg" subtitle=" "></Logg>
                     </div>
                 </div>
             </div>
@@ -150,7 +142,8 @@ class Søknad extends React.Component {
 }
 const mapStoreToProps = store => {
     return {
-        søknader: store.soknader
+        søknader: store.soknader,
+        logger: store.logger
     }
 }
 Søknad.propTypes = {
