@@ -14,13 +14,15 @@ import { hentMineSoknader, filtrerSoknader } from '../../actions/soknader-action
 import Search from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './style/Søknader.css';
+import menu from '../../constants/menu';
+import { setMenu } from '../../actions/menu-action';
 
 import Statistikk from '../elements/Statistikk';
 
-class Profile extends React.Component {
+class MineSøknader extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: 'hello' };
+        this.props.dispatch(setMenu(menu.mineSøknader))
     }
 
     componentWillMount() {
@@ -54,8 +56,8 @@ class Profile extends React.Component {
                     </div>
                     <div className="column is-two-thirds">
                         <Statistikk
-                            registrert="80%"
-                            inhentetSkatt="20%"
+                            registrert="66%"
+                            inhentetSkatt="33%"
                             opprettetBevilling="0%"
                         />
 
@@ -86,7 +88,7 @@ class Profile extends React.Component {
                                     <TableCell>{row.kontakt}</TableCell>
                                     <TableCell>{row.status}</TableCell>
                                     <TableCell align="right">
-                                        <Link className="åpneKnapp" color="primary" to={`/soknad/${row.id}`}><i className="fas fa-external-link-alt" style={{ paddingRight: "5px" }}></i>Åpne</Link>
+                                        <Link className="åpneKnapp" color="primary" to={`/soknad/${row.id}`}>Åpne</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
@@ -104,9 +106,9 @@ const mapStoreToProps = store => {
     }
 }
 
-Profile.propTypes = {
+MineSøknader.propTypes = {
     menu: PropTypes.number,
 };
 
-export default connect(mapStoreToProps)(Profile);
+export default connect(mapStoreToProps)(MineSøknader);
 

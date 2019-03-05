@@ -62,32 +62,32 @@ class Søknad extends React.Component {
                     <h1>Søknad <small>({søknad.status})</small></h1>
                     <br />
                     <div className="columns">
-                        <div className="column">
-                            <TextField value={søknad.navn} fullWidth label="Virksomhet" />
+                        <div className="column is-two-quarters">
+                            <TextField value={søknad.navn} fullWidth  label="Virksomhet" />
                         </div>
-                        <div className="column">
-                            <TextField value={søknad.org} fullWidth label="Organisasjonsnummer" />
-                        </div>
-                    </div>
-                    <div className="columns">
-                        <div className="column is-two-thirds">
-                            <TextField value={søknad.kontakt} fullWidth label="Kontakt" />
-                        </div>
-                        <div className="column is-one-thirds">
-                            <TextField value={søknad.tlf} fullWidth label="Telefon" />
+                        <div className="column is-one-quarters">
+                            <TextField value={søknad.org}  label="Organisasjonsnummer" />
                         </div>
                     </div>
                     <div className="columns">
-                        <div className="column">
+                        <div className="column is-two-quarters">
+                            <TextField value={søknad.kontakt} fullWidth  label="Kontakt" />
+                        </div>
+                        <div className="column is-one-quarters">
+                            <TextField value={søknad.tlf}   label="Telefon" />
+                        </div>
+                    </div>
+                    <div className="columns">
+                        <div className="column is-half">
                             <TextField value={søknad.epost} fullWidth label="Epost" />
                         </div>
                     </div>
                     <div className="columns">
-                        <div className="column is-two-thirds">
+                        <div className="column is-two-quarters">
                             <TextField value={søknad.opprettet} fullWidth label="Opprettet" />
                         </div>
-                        <div className="column is-one-thirds">
-                            <TextField value={`${søknad.postnr} - ${søknad.poststed}`} fullWidth label="Poststed" />
+                        <div className="column is-one-quarters">
+                            <TextField value={`${søknad.postnr} - ${søknad.poststed}`}   label="Poststed" />
                         </div>
                     </div>
                     <br />
