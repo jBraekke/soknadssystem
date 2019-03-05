@@ -73,7 +73,7 @@ class Saker extends React.Component {
                                     <TableCell>{row.contact}</TableCell>
                                     <TableCell>{row.status}</TableCell>
                                     <TableCell align="right">
-                                        <Link to={`/soknad/${row.open}`}>Åpne</Link>
+                                        <Link to={`/soknad/${row.open}`}><i class="fas fa-external-link-alt"></i>Åpne</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}

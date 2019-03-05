@@ -9,3 +9,13 @@
 .åpneKnapp:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
 }
+
+.stats{
+    text-align: center;
+    padding-left: 15px;
+}
+
+h1{
+    color:  rgb(0, 147, 167);
+    font-weight: 900;
+}
