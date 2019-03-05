@@ -3,10 +3,12 @@ import actions from '../actions/actions';
 const loggReducer = (state = [], action) => {
     switch (action.type) {
         case actions.HENT_LOGG:
-            return action.logg
+
+            action.logg.forEach(logg => state.push(logg));
+
+            return state;
         case actions.OPPRETT_LOGG:
-            state.push(action.logg);
-            return state
+            return [ action.logg, ...state];
         default:
             return state
     }

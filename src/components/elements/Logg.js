@@ -14,7 +14,9 @@ class Logg extends React.Component {
 
     componentWillMount() {
         window.scrollTo(0, 0);
-        this.props.dispatch(hentLogger());
+        if (this.props.logger.length === 0) {
+            this.props.dispatch(hentLogger());
+        }
     }
 
     render() {
@@ -24,22 +26,23 @@ class Logg extends React.Component {
                     <h1>
                         {this.props.title}
                     </h1>
+                    <br />
                     <p className="subtitle">
                         {this.props.subtitle}
                     </p>
                 </div>
                 <div>
-                    <table class="table is-striped is-hoverable">
+                    <table className="table is-striped is-hoverable">
                         <thead>
                             <tr>
-                                <th>Dato</th>
-                                <th>Beskrivelse</th>
-                                <th>Opprettet av</th>
+                                <td>Dato</td>
+                                <td>Beskrivelse</td>
+                                <td>Opprettet av</td>
                             </tr>
                         </thead>
                         <tbody>
-                            {this.props.logger.map(logg => {
-                                return <tr>
+                            {(this.props.logger || []).map((logg, index) => {
+                                return <tr key={index}>
                                     <td>
                                         <p>{logg.opprettet}</p>
                                     </td>

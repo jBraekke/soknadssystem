@@ -65,7 +65,7 @@ class Søknader extends React.Component {
                                     <TableCell>{row.kontakt}</TableCell>
                                     <TableCell>{row.status}</TableCell>
                                     <TableCell align="right">
-                                        <Link class="åpneKnapp" color="primary" to={`/soknad/${row.id}`}>Åpne</Link>
+                                        <Link className="åpneKnapp" color="primary" to={`/soknad/${row.id}`}>Åpne</Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
