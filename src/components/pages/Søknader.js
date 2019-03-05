@@ -15,6 +15,8 @@ import Search from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import './style/Søknader.css';
 
+import Statistikk from '../elements/Statistikk';
+
 
 class Søknader extends React.Component {
     constructor(props) {
@@ -52,32 +54,12 @@ class Søknader extends React.Component {
                         />
                     </div>
                     <div className="column is-two-thirds">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td className="stats">
-                                    <h1>80%</h1>
-                                </td>
-                                <td className="stats">
-                                    <h1>20%</h1>
-                                </td>
-                                <td className="stats">
-                                    <h1>0%</h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="stats">
-                                    <h2>Registrert</h2>
-                                </td>
-                                <td className="stats">
-                                    <h2>Innhenter skatt</h2>
-                                </td>
-                                <td className="stats">
-                                    <h2>Opprettet bevilling</h2>
-                                </td>
-                            </tr> 
-                            </tbody>                       
-                        </table>
+                              <Statistikk
+                                registrert="80%"
+                                inhentetSkatt="20%"
+                                opprettetBevilling="0%"
+                                />
+                        
                     </div>
                 </div>
                 <Paper styles={{

@@ -9,6 +9,12 @@ const alleSoknader = [
     new Soknad('Storgata bryggeri AS', '921027672', '1808', 'Askim', 'Sven O. Høiby', 'Registrert', 5),
 ];
 
+const mineSoknader = [
+    new Soknad('Sider AS', '921651686', '1337', 'Sandvika', 'Ola Nordmann', 'Innhenter skatt', 3),
+    new Soknad('Stolt bryggeri AS', '912856291', '1166', 'Oslo', 'Kari Jaquesson', 'Registrert', 4),
+    new Soknad('Storgata bryggeri AS', '921027672', '1808', 'Askim', 'Sven O. Høiby', 'Registrert', 5),
+];
+
 function hentSoknader() {
     return (dispatch) => {
         dispatch({
@@ -18,9 +24,19 @@ function hentSoknader() {
     }
 }
 
-function filtrerSoknader(searchWord) {
 
-    var searchResult = alleSoknader.filter((soknad) => soknad.org.indexOf(searchWord) > -1);
+function hentMineSoknader() {
+    return (dispatch) => {
+        dispatch({
+            type: actions.HENT_MINE_SOKNADER,
+            soknader: mineSoknader
+        });
+    }
+}
+
+function filtrerSoknader(searchWord, søknader=alleSoknader) {
+
+    var searchResult = søknader.filter((soknad) => soknad.org.indexOf(searchWord) > -1);
 
     return (dispatch) => {
         dispatch({
@@ -30,4 +46,4 @@ function filtrerSoknader(searchWord) {
     }
 }
 
-export { hentSoknader, filtrerSoknader };
+export { hentSoknader, filtrerSoknader, hentMineSoknader };
