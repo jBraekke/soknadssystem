@@ -10,7 +10,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Link } from 'react-router-dom';
-
+import Search from '@material-ui/icons/Search';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import { setMenu } from '../../actions/menu-action';
 import menu from '../../constants/menu';
 
@@ -31,22 +32,25 @@ class Saker extends React.Component {
         }
 
         const rows = [
-            createData('Atlungstad Håndverksdestilleri AS (820853032)', 'Atlungstad - 1668', 'Jens Jensen', 'Registrert', 1),
-            createData('Jåttå Gårdsbryggeri AS (123456789)', 'Jåtta - 0103', 'Erling Havnå', 'Innhenter vandel', 2),
-            createData('Sider AS (921651686)', 'Sandvika - 1337', 'Ola Nordmann', 'Innhenter skatt', 3),
-            createData('Stolt bryggeri AS (912856291)', 'Oslo - 1166', 'Kari Jaquesson', 'Registrert', 4),
-            createData('Storgata bryggeri AS (921027672)', 'Askim - 1808', 'Sven O. Høiby', 'Registrert', 5),
         ];
 
         return (
 
             <React.Fragment>
                 <TextField
-                    style={{ padding: '13px 44px 7px' }}
-                    placeholder="Søk i saker"
-                    fullWidth
-                    margin="normal"
-                />
+                            style={{ padding: '13px 20px 7px', width: "500px" }}
+                            placeholder="Søk etter organisasjonsnummer"
+                            fullWidth
+                            margin="normal"
+                            onChange={(e) => this.handleSearch(e.target.value)}
+                            InputProps={{
+                                startAdornment: (
+                                  <InputAdornment position="start">
+                                    <Search/>
+                                  </InputAdornment>
+                                ),
+                              }}
+                        />
 
                 <Paper styles={{
                     width: '100%',
